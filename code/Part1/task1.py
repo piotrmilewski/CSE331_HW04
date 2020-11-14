@@ -6,7 +6,7 @@ sc = shellcraft.sh()
 
 asm_sc = asm(sc)
 
-program = session.system('cd /problems/handy-shellcode_4_037bd47611d842b565cfa1f378bfd8d9/;./vuln')
+program = session.process(['./vuln'], cwd='/problems/handy-shellcode_4_037bd47611d842b565cfa1f378bfd8d9/')
 
 program.recvline()
 
