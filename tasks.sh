@@ -1,0 +1,9 @@
+#!/bin/sh
+./task1.sh
+./task2.sh
+./task3.sh
+./task4.sh
+./task5.sh
+./task6.sh
+./task7.sh
+./task8.sh
