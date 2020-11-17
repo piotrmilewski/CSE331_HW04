@@ -14,6 +14,3 @@ print(rawFlag)
 
 program.close()
 session.close()
-
-program.close()
-session.close()
