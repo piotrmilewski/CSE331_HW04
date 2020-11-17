@@ -27,3 +27,7 @@ flag = flagInB.decode('ascii')
 rawFlag = flag[flag.index('{')+1:flag.index('}')]
 
 print(rawFlag)
+
+program.close()
+session.close()
+

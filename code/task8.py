@@ -20,5 +20,9 @@ while True:
 
         print(rawFlag)
 
+        program.close()
         break
 
+    program.close()
+
+session.close()

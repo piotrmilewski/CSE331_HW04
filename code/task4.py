@@ -20,13 +20,13 @@ while True:
 
             print(rawFlag)
 
-            break
-        else:
             program.close()
+            break
     except EOFError:
-        program.close()
+        pass
+
+    program.close()
 
     i = i + 1
 
-
-
+session.close()

